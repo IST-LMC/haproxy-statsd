@@ -4,6 +4,10 @@ This script reports stats to statsd using [haproxy's](http://haproxy.1wt.eu/) st
 
 Supported with Python 2.6 and Python 2.7.
 
+Changes
+-------
+* Modified to use haproxy 1.8 API TCP Socket instead of UNIX Socket
+
 Usage
 -----
 ```
@@ -23,10 +27,11 @@ Configuration via environment
 STATSD_HOST=127.0.0.1 \
 STATSD_PORT=8125 \
 STATSD_NAMESPACE=haproxy \
-HAPROXY_HOST=127.0.0.1 \
+HAPROXY_SOCKET_IP=127.0.0.1 \
+HAPROXY_SOCKET_PORT=9898 \
 HAPROXY_USER=stats \
 HAPROXY_PASS=stats \
-report_haproxy.py
+haproxy-statsd.py
 ```
 
 Config file
@@ -35,7 +40,8 @@ Default location is ./haproxy-statsd.conf.
 
 ```
 [haproxy-statsd]
-haproxy_url = http://127.0.0.1:1936/;csv
+haproxy_socket_ip = 127.0.0.1
+haproxy_socket_port = 9898
 haproxy_user =
 haproxy_password =
 statsd_host = 127.0.0.1

@@ -1,5 +1,6 @@
 [haproxy-statsd]
-haproxy_url = http://127.0.0.1:1936/;csv
+haproxy_socket_ip = 127.0.0.1
+haproxy_socket_port = 9898
 haproxy_user =
 haproxy_password =
 statsd_host = 127.0.0.1
